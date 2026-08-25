@@ -1,0 +1,44 @@
+{
+  "name": "creatorvault",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CreatorVault - Full-Stack Digital Asset Management Platform",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm run start",
+    "db:generate": "cd server && npm run prisma:generate",
+    "db:migrate": "cd server && npm run prisma:migrate",
+    "db:studio": "cd server && npm run prisma:studio",
+    "db:seed": "cd server && npm run db:seed",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "cd server && npm run test",
+    "test:client": "cd client && npm run test",
+    "lint": "npm run lint:server && npm run lint:client",
+    "lint:server": "cd server && npm run lint",
+    "lint:client": "cd client && npm run lint",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "digital-asset-management",
+    "file-management",
+    "collaboration",
+    "react",
+    "express",
+    "typescript",
+    "postgresql",
+    "prisma"
+  ],
+  "author": "",
+  "license": "MIT"
+}
