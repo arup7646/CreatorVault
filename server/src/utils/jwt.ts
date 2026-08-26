@@ -13,13 +13,13 @@ export interface TokenPayload {
 
 export const generateAccessToken = (payload: TokenPayload): string => {
   return jwt.sign(payload, config.jwt.secret, {
-    expiresIn: config.jwt.accessTokenExpiry,
+    expiresIn: config.jwt.accessTokenExpiry as jwt.SignOptions['expiresIn'],
   });
 };
 
 export const generateRefreshToken = (payload: TokenPayload): string => {
   return jwt.sign(payload, config.jwt.secret, {
-    expiresIn: config.jwt.refreshTokenExpiry,
+    expiresIn: config.jwt.refreshTokenExpiry as jwt.SignOptions['expiresIn'],
   });
 };
 
