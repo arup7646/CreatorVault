@@ -355,7 +355,7 @@ export function ProjectDetailPage() {
                       <video className="w-full h-full object-cover" muted><source src={`/api/files/${asset.storagePath}`} type={asset.mimeType} /></video>
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <getFileIcon(asset.mimeType) className="h-12 w-12 text-gray-400" />
+                        <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                       </div>
                     )}
                     <div className="absolute top-2 right-2 flex gap-1">
@@ -402,7 +402,7 @@ export function ProjectDetailPage() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                              <getFileIcon(asset.mimeType) className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                              <<FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                             </div>
                             <div>
                               <p className="font-medium text-gray-900 dark:text-white">{asset.originalName}</p>
@@ -466,7 +466,7 @@ export function ProjectDetailPage() {
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {uploadFiles.map((file, index) => (
                 <div key={index} className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <getFileIcon(file.type) className="h-6 w-6 text-gray-500" />
+                  <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{file.name}</p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">{formatFileSize(file.size)}</p>

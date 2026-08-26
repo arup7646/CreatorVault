@@ -20,7 +20,8 @@ import { Badge } from '../components/ui/Badge';
 import { Avatar } from '../components/ui/Avatar';
 import { Skeleton, SkeletonCard } from '../components/ui/Skeleton';
 import { EmptyState } from '../components/ui/EmptyState';
-import { formatFileSize, formatRelativeTime, getFileIcon, cn } from '../utils/helpers';
+import { formatFileSize, formatRelativeTime, cn } from '../utils/helpers';
+import { FileIcon } from '../components/ui/FileIcon';
 import { Project, Asset, ActivityLog, DashboardStats } from '../types';
 import toast from 'react-hot-toast';
 
@@ -235,7 +236,7 @@ export function DashboardPage() {
                         <img src={`/api/files/${asset.storagePath}`} alt={asset.originalName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <getFileIcon(asset.mimeType) className="h-12 w-12 text-gray-400" />
+                          <FileIcon mimeType={asset.mimeType} className="h-12 w-12 text-gray-400" />
                         </div>
                       )}
                       {asset.isFavorite && (
@@ -280,7 +281,7 @@ export function DashboardPage() {
               {favoriteAssets.slice(0, 5).map(asset => (
                 <Link key={asset.id} href={`/projects/${asset.projectId}/assets/${asset.id}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <div className="h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <getFileIcon(asset.mimeType) className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                   <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-gray-900 dark:text-white truncate">{asset.originalName}</p>

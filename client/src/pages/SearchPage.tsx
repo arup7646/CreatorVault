@@ -320,7 +320,7 @@ export function SearchPage() {
                         <img src={`/api/files/${asset.storagePath}`} alt={asset.originalName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <getFileIcon(asset.mimeType) className="h-12 w-12 text-gray-400" />
+                          <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                         </div>
                       )}
                       <div className="absolute top-2 right-2 flex gap-1">

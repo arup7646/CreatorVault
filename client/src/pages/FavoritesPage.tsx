@@ -146,7 +146,7 @@ export function FavoritesPage() {
                       <img src={`/api/files/${asset.storagePath}`} alt={asset.originalName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <getFileIcon(asset.mimeType) className="h-12 w-12 text-gray-400" />
+                        <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                       </div>
                     )}
                     <div className="absolute top-2 right-2">
@@ -187,7 +187,7 @@ export function FavoritesPage() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                              <getFileIcon(asset.mimeType) className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                              <FileIcon mimeType={asset.mimeType} className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                             </div>
                             <div>
                               <p className="font-medium text-gray-900 dark:text-white">{asset.originalName}</p>
