@@ -14,7 +14,7 @@ export const validate = (schema: ZodSchema) => {
       if (!result.success) {
         const errors = result.error.flatten().fieldErrors;
         const messages = Object.entries(errors).map(
-          ([field, msgs]) => `${field}: ${msgs.join(', ')}`
+          ([field, msgs]) => `${field}: ${(msgs ?? []).join(', ')}`
         );
         throw new AppError(messages.join('; '), 400, 'VALIDATION_ERROR');
       }
