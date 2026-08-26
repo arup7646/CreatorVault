@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   FolderKanban, 
   FileImage, 
@@ -33,6 +33,7 @@ const statsCards = [
 
 export function DashboardPage() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [recentProjects, setRecentProjects] = useState<Project[]>([]);
   const [recentAssets, setRecentAssets] = useState<Asset[]>([]);
@@ -53,7 +54,6 @@ export function DashboardPage() {
         const projects = projectsRes.data.projects;
         const totalAssets = projects.reduce((sum, p) => sum + p._count.assets, 0);
         const totalStorage = projects.reduce((sum, p) => {
-          // We'd need a separate call for total storage, using placeholder for now
           return sum;
         }, 0);
 
@@ -116,7 +116,7 @@ export function DashboardPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {statsCards.map((stat, index) => (
-          <Link key={index} href={stat.href} className="group">
+          <Link key={index} to={stat.href} className="group">
             <Card className="p-6 flex items-center gap-4 hover:shadow-lg transition-shadow">
               <div className={cn('h-12 w-12 rounded-xl flex items-center justify-center', stat.color)}>
                 <stat.icon className="h-6 w-6 text-white" />
@@ -148,12 +148,12 @@ export function DashboardPage() {
               icon={<FolderKanban className="h-12 w-12" />}
               title="No projects yet"
               description="Create your first project to start organizing your assets"
-              action={{ label: 'Create Project', onClick: () => window.location.href = '/projects/new' }}
+              action={{ label: 'Create Project', onClick: () => navigate('/projects/new') }}
             />
           ) : (
             <div className="space-y-3">
               {recentProjects.slice(0, 5).map(project => (
-                <Link key={project.id} href={`/projects/${project.id}`} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                <Link key={project.id} to={`/projects/${project.id}`} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <div className="h-10 w-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0">
                     <FolderKanban className="h-5 w-5 text-primary-600 dark:text-primary-400" />
                   </div>
@@ -223,12 +223,12 @@ export function DashboardPage() {
               icon={<FileImage className="h-12 w-12" />}
               title="No recent uploads"
               description="Upload your first asset to get started"
-              action={{ label: 'Upload Asset', onClick: () => window.location.href = '/projects' }}
+              action={{ label: 'Upload Asset', onClick: () => navigate('/projects') }}
             />
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {recentAssets.slice(0, 6).map(asset => (
-                <Link key={asset.id} href={`/projects/${asset.projectId}/assets/${asset.id}`} className="group">
+                <Link key={asset.id} to={`/projects/${asset.projectId}/assets/${asset.id}`} className="group">
                   <Card className="p-0 overflow-hidden h-full group-hover:shadow-lg transition-shadow">
                     <div className="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
                       {asset.mimeType.startsWith('image/') ? (
@@ -278,7 +278,7 @@ export function DashboardPage() {
           ) : (
             <div className="space-y-3">
               {favoriteAssets.slice(0, 5).map(asset => (
-                <Link key={asset.id} href={`/projects/${asset.projectId}/assets/${asset.id}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                <Link key={asset.id} to={`/projects/${asset.projectId}/assets/${asset.id}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <div className="h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
                     <getFileIcon(asset.mimeType) className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                   </div>
