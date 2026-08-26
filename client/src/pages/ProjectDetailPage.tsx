@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { 
   Plus, 
   Search, 
@@ -499,7 +499,7 @@ export function ProjectDetailPage() {
           <div className="flex justify-end gap-2 pt-4">
             <Button type="button" variant="secondary" onClick={() => setShowUploadModal(false)}>Cancel</Button>
             <Button type="submit" isLoading={uploading} disabled={uploadFiles.length === 0}>
-              {uploading ? 'Uploading...' : `Upload ${uploadFiles.length} file(s)`}
+              {uploading ? 'Uploading...' : `Upload {uploadFiles.length} file(s)`}
             </Button>
           </div>
         </form>

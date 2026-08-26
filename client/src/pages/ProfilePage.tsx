@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { User, Edit, Camera, ChevronLeft, FolderKanban, FileImage, Star, Clock, Settings, LogOut } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { User, Edit, Camera, ChevronLeft, FolderKanban, FileImage, Star, Clock, Settings, LogOut, Plus, Eye } from 'lucide-react';
 import { authApi } from '../api/endpoints';
 import { projectApi } from '../api/endpoints';
 import { assetApi } from '../api/endpoints';
@@ -245,12 +245,16 @@ export function ProfilePage() {
             <h3 className="font-semibold text-gray-900 dark:text-white">Quick Actions</h3>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-            <Button variant="outline" className="gap-2" onClick={() => navigate('/projects/new')}>
-              <FolderKanban className="h-4 w-4" /> New Project
-            </Button>
-            <Button variant="outline" className="gap-2" onClick={() => navigate('/settings')}>
-              <Settings className="h-4 w-4" /> Settings
-            </Button>
+            <Link to="/projects/new">
+              <Button variant="outline" className="gap-2">
+                <FolderKanban className="h-4 w-4" /> New Project
+              </Button>
+            </Link>
+            <Link to="/settings">
+              <Button variant="outline" className="gap-2">
+                <Settings className="h-4 w-4" /> Settings
+              </Button>
+            </Link>
           </div>
         </Card>
       )}
@@ -259,15 +263,19 @@ export function ProfilePage() {
         <Card className="p-0 overflow-hidden">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <h3 className="font-semibold text-gray-900 dark:text-white">Your Projects</h3>
-            <Button variant="ghost" size="sm" onClick={() => navigate('/projects/new')}>Create Project</Button>
+            <Link to="/projects/new">
+              <Button variant="ghost" size="sm">Create Project</Button>
+            </Link>
           </div>
           {projects.length === 0 ? (
             <div className="p-12 text-center">
               <FolderKanban className="h-12 w-12 mx-auto text-gray-300 dark:text-gray-600 mb-3" />
               <p className="text-gray-500 dark:text-gray-400">No projects yet</p>
-              <Button className="mt-4 gap-2" onClick={() => navigate('/projects/new')}>
-                <Plus className="h-4 w-4" /> Create Project
-              </Button>
+              <Link to="/projects/new">
+                <Button className="mt-4 gap-2">
+                  <Plus className="h-4 w-4" /> Create Project
+                </Button>
+              </Link>
             </div>
           ) : (
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -291,7 +299,9 @@ export function ProfilePage() {
         <Card className="p-0 overflow-hidden">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <h3 className="font-semibold text-gray-900 dark:text-white">Favorite Assets</h3>
-            <Button variant="ghost" size="sm" onClick={() => navigate('/favorites')}>View All</Button>
+            <Link to="/favorites">
+              <Button variant="ghost" size="sm">View All</Button>
+            </Link>
           </div>
           {assets.length === 0 ? (
             <div className="p-12 text-center">

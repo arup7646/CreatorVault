@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Search, X, Filter, ChevronLeft, FolderKanban, File, Star, Clock, ChevronDown, Tag } from 'lucide-react';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { Search, X, Filter, ChevronLeft, FolderKanban, File, Star, Clock, ChevronDown, Tag, Eye, MoreVertical } from 'lucide-react';
 import { useDebounce } from '../hooks/useDebounce';
 import { searchApi } from '../api/endpoints';
 import { projectApi } from '../api/endpoints';
@@ -60,7 +60,7 @@ export function SearchPage() {
 
   useEffect(() => {
     fetchProjects();
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (debouncedQuery.length >= 1 || type !== 'all' || fileType || projectId || selectedTags.length || favoritesOnly || dateFrom || dateTo || sizeMin || sizeMax) {

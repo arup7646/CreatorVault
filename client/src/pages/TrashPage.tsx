@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Trash2, RotateCcw, MoreVertical, Download, Eye, ChevronLeft, Trash } from 'lucide-react';
+import { Trash2, RotateCcw, MoreVertical, Download, Eye, ChevronLeft, Trash, Grid, List } from 'lucide-react';
 import { assetApi } from '../api/endpoints';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
@@ -118,10 +118,10 @@ export function TrashPage() {
         <div className="flex items-center gap-2">
           <div className="flex border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
             <button onClick={() => setViewMode('grid')} className={cn('p-2', viewMode === 'grid' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800')}>
-              <div className="h-4 w-4"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg></div>
+              <Grid className="h-4 w-4" />
             </button>
             <button onClick={() => setViewMode('list')} className={cn('p-2', viewMode === 'list' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800')}>
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <List className="h-4 w-4" />
             </button>
           </div>
         </div>
